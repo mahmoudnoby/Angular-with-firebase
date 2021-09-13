@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "school-tops": {
+      "hosting": {
+        "ng-dashboard": [
+          "school-tops"
+        ]
+      }
+    }
+  }
+}
