@@ -3,7 +3,7 @@
       <div class="card-body">
           <h1 class="text-center mb-5 ">Login</h1>
           <p class="text-muted">Sign In to your account</p>
-          <form >
+          <form  [formGroup]="loginForm" (ngSubmit)="userLogin()">
               <div class="form-group">
                   <label class="sr-only" for="email">Email</label>
                   <div class="input-group mb-2 mr-sm-2">
@@ -12,7 +12,7 @@
                               <i class="pi pi-user"></i>
                           </div>
                       </div>
-                      <input type="text" class="form-control" id="email" placeholder="Email" formControlName="email">
+                      <input type="text" class="form-control" id="email" placeholder="Email" formControlName="userEmail">
 
                   </div>
               </div>
@@ -24,7 +24,7 @@
                               <i class="pi pi-lock"></i>
                           </div>
                       </div>
-                      <input type="password" class="form-control" id="password" placeholder="Password" formControlName="password">
+                      <input type="password" class="form-control" id="password" placeholder="Password" formControlName="userPassword">
 
                   </div>
               </div>
@@ -33,7 +33,7 @@
                   <label class="mx-2 my-0" for="rememberme">Remember me</label>
               </div> -->
               <div class="form-group mb-0">
-                  <button  type="button" label="Login" class="btn btn-primary">Login</button>
+                  <button  type="submit" label="Login" class="btn btn-primary">Login</button>
               </div>
           </form>
       </div>

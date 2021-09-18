@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { UsersListComponent } from './users-list/users-list.component';
-import { AddUserComponent } from './add-user/add-user.component';
 import { RouterModule } from '@angular/router';
+import { UsersListComponent } from './components/users-list/users-list.component';
+import { AddUserComponent } from './components/add-user/add-user.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -13,6 +14,7 @@ import { RouterModule } from '@angular/router';
   ],
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     RouterModule.forChild( [
       { path: '' , component: UsersListComponent },
       { path: 'add-new' , component: AddUserComponent }

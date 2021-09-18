@@ -11,8 +11,7 @@ export class UsersListComponent implements OnInit {
 
   items!: Observable<any[]>;
   constructor(firestore: AngularFirestore) {
-    this.items =firestore.collection('top-students').valueChanges();
-
+    this.items = firestore.collection('students').valueChanges();
   }
 
   ngOnInit(): void {
