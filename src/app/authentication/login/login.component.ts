@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { NavbarService } from 'src/app/shared/services/navbar.service';
 
 @Component({
@@ -12,7 +13,8 @@ import { NavbarService } from 'src/app/shared/services/navbar.service';
 export class LoginComponent implements OnInit {
 
   loginForm: FormGroup
-  constructor(private navService: NavbarService, private fb:FormBuilder, private fAuth: AngularFireAuth) {
+  constructor(private navService: NavbarService, private fb:FormBuilder,
+     private fAuth: AngularFireAuth, private toastr: ToastrService, private router: Router) {
     this.navService.hide();
     this.loginForm = this.fb.group({
       userEmail: ['', [Validators.required]],
@@ -29,10 +31,14 @@ export class LoginComponent implements OnInit {
     this.fAuth.signInWithEmailAndPassword(this.loginForm.get('userEmail')?.value, this.loginForm.get('userPassword')?.value)
     .then( res => {
       console.log(res);
-
+      this.toastr.success('Welcome');
+      this.router.navigate(['users-list']);
+      this.navService.show();
     })
     .catch( error => {
-      console.log(error);
+      debugger
+      console.log(error.message);
+      this.toastr.error(error.message)
 
     })
   }
